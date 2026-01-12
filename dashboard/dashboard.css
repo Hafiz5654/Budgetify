@@ -1,0 +1,343 @@
+/* ===============================
+   DASHBOARD.CSS (FULL FIX)
+   - Kunci layout max-width 430px (mobile look)
+   - Center container di desktop
+   - Bottom nav tetap center (tidak melebar)
+================================ */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+html, body{
+  width:100%;
+  height:100%;
+  background:#ffffff;
+}
+
+/* Biar tetap terlihat seperti UI mobile meskipun dibuka di desktop */
+body{
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+}
+
+/* WRAPPER UTAMA */
+.container{
+  width:100%;
+  max-width:430px;              /* ✅ kunci seperti design awal */
+  min-height:100vh;
+  padding:18px 16px 110px;      /* ✅ ruang buat bottom-nav */
+  background:#ffffff;
+}
+
+/* JUDUL */
+.dashboard-title{
+  font-size:14px;
+  font-weight:700;
+  color:#111;
+  margin:6px 0 12px;
+}
+
+/* ===============================
+   BALANCE CARD
+================================ */
+.balance-card{
+  background:#008b85;
+  border-radius:18px;
+  padding:14px 14px 16px;
+  color:#fff;
+}
+
+.balance-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  font-size:12px;
+  font-weight:600;
+}
+
+.month-select select{
+  border:0;
+  outline:0;
+  background:#ffffff;
+  color:#008b85;
+  font-weight:700;
+  font-size:12px;
+  padding:6px 10px;
+  border-radius:10px;
+}
+
+.balance-value{
+  margin-top:10px;
+  font-size:22px;
+  font-weight:800;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.balance-value span{
+  font-size:26px;
+  font-weight:900;
+}
+
+#toggleBalance{
+  font-size:16px;
+  cursor:pointer;
+  opacity:.95;
+}
+
+.download-link{
+  display:inline-block;
+  margin-top:10px;
+  font-size:11px;
+  font-weight:700;
+  color:#fff;
+  text-decoration:none;
+  opacity:.95;
+}
+
+/* ===============================
+   TAB GROUP (income/expand/monthly)
+================================ */
+.tab-group{
+  margin:12px 0 10px;
+  background:#9bb37d;
+  border-radius:999px;
+  padding:3px;
+  display:flex;
+  gap:3px;
+}
+
+.tab-group .tab{
+  flex:1;
+  text-align:center;
+  padding:10px 0;
+  font-size:12px;
+  color:#fff;
+  text-decoration:none;
+  border-radius:999px;
+  font-weight:600;
+}
+
+.tab-group .tab.active{
+  background:#008b85;
+  font-weight:800;
+}
+
+/* ===============================
+   EMPTY STATE
+================================ */
+.empty{
+  margin-top:16px;
+  background:#fff;
+  border:1px solid #d7ece6;
+  border-radius:16px;
+  padding:18px 14px;
+  text-align:center;
+}
+
+.empty-img{
+  width:65%;
+  max-width:260px;
+  height:auto;
+  display:block;
+  margin:0 auto 10px;
+}
+
+.empty p{
+  font-size:12px;
+  font-weight:700;
+  color:#008b85;
+}
+
+/* ===============================
+   TRANSACTION LIST (default card)
+   (dipakai beberapa halaman)
+================================ */
+.transaction-list{
+  margin-top:6px;
+}
+
+.transaction-card{
+  background:#fff;
+  border:1px solid #d7ece6;
+  border-radius:14px;
+  padding:12px 12px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px;
+}
+
+.transaction-card .left{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.transaction-card .icon{
+  width:44px;
+  height:44px;
+  border-radius:12px;
+  background:#e6fffb;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  flex:0 0 auto;
+}
+
+.transaction-card .icon i{
+  color:#008b85;
+  font-size:18px;
+}
+
+.transaction-card .info strong{
+  display:block;
+  font-size:12px;
+  font-weight:800;
+  color:#111;
+}
+
+.transaction-card .info small{
+  display:block;
+  font-size:10px;
+  font-weight:600;
+  color:#7a8a84;
+  margin-top:2px;
+}
+
+.transaction-card .right{
+  text-align:right;
+}
+
+.transaction-card .amount{
+  font-size:12px;
+  font-weight:900;
+}
+
+.transaction-card .amount.income{ color:#008b85; }
+.transaction-card .amount.expense{ color:#ff3b3b; }
+
+.transaction-card .right small{
+  display:block;
+  font-size:10px;
+  font-weight:700;
+  color:#7a8a84;
+  margin-top:2px;
+}
+
+/* ===============================
+   BOTTOM NAV (fixed & centered)
+================================ */
+.bottom-nav{
+  position:fixed;
+  left:50%;
+  bottom:14px;
+  transform:translateX(-50%);
+  width:min(92vw, 430px);       /* ✅ ikutin container */
+  padding:0 12px;
+  z-index:999;
+  pointer-events:none;          /* nav card doang yang clickable */
+}
+
+.bottom-nav .nav-inner{
+  pointer-events:auto;
+  background:#fff;
+  border-radius:22px;
+  border:1px solid #d7ece6;
+  box-shadow:0 12px 24px rgba(0,0,0,.10);
+  padding:10px 14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+
+/* kalau file kamu pakai struktur lama (nav-group left/right + nav-plus),
+   kita support juga supaya tetap rapi */
+.bottom-nav{
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+  gap:10px;
+  pointer-events:none;
+}
+
+.bottom-nav .nav-group{
+  pointer-events:auto;
+  background:#fff;
+  border:1px solid #d7ece6;
+  border-radius:18px;
+  padding:10px 14px;
+  display:flex;
+  align-items:center;
+  gap:18px;
+  box-shadow:0 12px 24px rgba(0,0,0,.10);
+}
+
+.bottom-nav .nav-group.left{ padding-right:18px; }
+.bottom-nav .nav-group.right{ padding-left:18px; }
+
+.bottom-nav .nav-item{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  align-items:center;
+  text-decoration:none;
+  color:#94a3a0;
+  font-size:10px;
+  font-weight:700;
+}
+
+.bottom-nav .nav-item i{
+  font-size:18px;
+  color:#94a3a0;
+}
+
+.bottom-nav .nav-item.active,
+.bottom-nav .nav-item.active i{
+  color:#008b85;
+}
+
+/* tombol plus tengah */
+.nav-plus{
+  pointer-events:auto;
+  width:62px;
+  height:62px;
+  border-radius:999px;
+  background:#008b85;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 14px 26px rgba(0,0,0,.18);
+}
+
+.nav-plus a{
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  text-decoration:none;
+}
+
+.nav-plus i{
+  font-size:22px;
+}
+
+/* ===============================
+   RESPONSIVE SAFETY
+================================ */
+@media (max-width:430px){
+  .container{
+    max-width:100%;
+  }
+}
